@@ -7,7 +7,7 @@
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "AddUpdate","Home")
 </p>
 <table class="table">
     <tr>
@@ -47,8 +47,7 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
+            @Html.ActionLink("Edit", "AddUpdate","Home", new { id=item.CustomerID }, null) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
         </td>
     </tr>
