@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -69,6 +70,41 @@ namespace MVC.Controllers
 
             return View("~/Views/Home/Save.cshtml", obj);
         }
+
+        public ActionResult Delete(Int64? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Int64 customerID = Convert.ToInt64(id);
+            Customer customers = context.Customers.Where(m => m.CustomerID == customerID).SingleOrDefault();
+            if (customers == null)
+            {
+                return HttpNotFound();
+            }
+            context.Customers.Remove(customers);
+            if (context.SaveChanges() > 0)
+            {
+                TempData["Message"] = "Deleted Successfully";
+                return RedirectToAction("List","Home");
+            }
+            else
+            {
+                TempData["Message"] = "Error while deleting";
+                return HttpNotFound();
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
 
 
 

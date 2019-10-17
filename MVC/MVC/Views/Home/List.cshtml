@@ -47,8 +47,10 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.ActionLink("Edit", "AddUpdate","Home", new { id=item.CustomerID }, null) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+            @Html.ActionLink("Edit", "AddUpdate", "Home", new { id = item.CustomerID }, null) |
+            @Html.ActionLink("Delete", "Delete","Home", new { id = item.CustomerID }, new { onclick = string.Format("return confirm('Are you sure you want to delete {0}?');", item.FirstName + " " + item.LastName) })
+
+
         </td>
     </tr>
 }
