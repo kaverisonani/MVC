@@ -51,6 +51,8 @@ namespace MVC.Controllers
                     //context.Customers.Attach(obj);
                     //context.Entry(obj).Property(u => u.FirstName).IsModified = true;
                     //context.Entry(obj).Property(u => u.LastName).IsModified = true;
+
+                //practice
                 }
                 else
                 {
